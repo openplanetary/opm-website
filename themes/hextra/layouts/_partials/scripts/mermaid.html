@@ -1,0 +1,44 @@
+{{/* Mermaid */}}
+
+{{ $mermaidJsUrl := printf "https://cdn.jsdelivr.net/npm/mermaid@latest/dist/mermaid%s.js" (cond hugo.IsProduction ".min" "") -}}
+{{ with try (resources.GetRemote $mermaidJsUrl) -}}
+  {{ with .Err -}}
+    {{ errorf "Could not retrieve Mermaid js file from %s. Reason: %s." $mermaidJsUrl . -}}
+  {{ else with.Value -}}
+    {{ with resources.Copy (printf "js/mermaid.min.js") . -}}
+      {{ $mermaidJs := . | fingerprint -}}
+      <script defer src="{{ $mermaidJs.RelPermalink }}" integrity="{{ $mermaidJs.Data.Integrity }}" crossorigin="anonymous"></script>
+    {{ end -}}
+  {{ end -}}
+{{ end -}}
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Store original mermaid code for each diagram
+    document.querySelectorAll(".mermaid").forEach((el) => {
+      el.dataset.original = el.innerHTML;
+    });
+
+    const theme = document.documentElement.classList.contains("dark") ? "dark" : "default";
+    mermaid.initialize({ startOnLoad: true, theme: theme });
+
+    let timeout;
+    new MutationObserver(() => {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        const theme = document.documentElement.classList.contains("dark") ? "dark" : "default";
+        document.querySelectorAll(".mermaid").forEach((el) => {
+          // Reset to original content, preserving HTML
+          el.innerHTML = el.dataset.original;
+          el.removeAttribute("data-processed");
+        });
+        mermaid.initialize({ startOnLoad: true, theme: theme });
+        mermaid.init();
+      }, 150);
+    }).observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+  });
+</script>
