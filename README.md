@@ -1,1 +1,2 @@
-Head to the gh-pages branch.
+# OpenPlanetaryMap website
+
