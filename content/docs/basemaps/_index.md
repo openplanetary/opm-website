@@ -1,6 +1,6 @@
 ---
 date: '2025-07-04T16:21:19+02:00'
-draft: true
+draft: false
 title: 'Basemaps'
 ---
 
