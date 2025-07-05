@@ -7,7 +7,7 @@ layout: hextra-home
 
 <div class="hx:mt-6 hx:mb-6">
 {{< hextra/hero-headline >}}
-  Fostering planetary mapping and&nbsp;<br class="hx:sm:block hx:hidden" />cartography on the web for all
+  Build beautiful web interactive maps of planetary bodies
 {{< /hextra/hero-headline >}}
 </div>
 

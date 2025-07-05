@@ -64,3 +64,6 @@ coverage/
 *.seed
 *.pid.lock
 .lock-wscript
+
+# Hugo
+.hugo_build.lock
