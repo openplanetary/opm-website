@@ -1,5 +1,5 @@
 # Configuration
-baseURL: https://openplanetarymap.org/
+baseURL: https://openplanetary.github.io/opm-website/
 languageCode: en-us
 title: OpenPlanetaryMap
 
@@ -68,7 +68,7 @@ menu:
         type: search
     - name: GitHub
       weight: 7
-      url: "https://github.com/openplanetary/opm"
+      url: "https://github.com/openplanetary/opm-website"
       params:
         icon: github
 
@@ -82,13 +82,9 @@ menu:
       name: "About"
       pageRef: "/about"
       weight: 2
-    - identifier: hugoDocs
-      name: "Hugo Docs ↗"
-      url: "https://gohugo.io/documentation/"
-      weight: 3
 
 params:
-  description: Modern, responsive, batteries-included Hugo theme for creating beautiful static websites.
+  description: Basemaps and datasets for creating beautiful planetary web interactive maps.
 
   navbar:
     displayTitle: true
@@ -135,7 +131,7 @@ params:
 
   editURL:
     enable: true
-    base: "https://github.com/openplanetary/opm/edit/main/content"
+    base: "https://github.com/openplanetary/opm-website/edit/master/content"
 
   blog:
     list:
