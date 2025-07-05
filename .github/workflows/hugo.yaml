@@ -66,6 +66,7 @@ jobs:
       - name: Build with Hugo
         run: |
           hugo \
+            --buildDraft \
             --gc \
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/" \
