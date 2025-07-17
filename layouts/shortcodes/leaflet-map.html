@@ -1,0 +1,29 @@
+{{- $layer_url := .Get "layer_url" -}}
+{{- $height := .Get "height" | default "100%" -}}
+{{- $width := .Get "width" | default "500px" -}}
+{{- $tms := .Get "tms" | default "false" -}}
+{{- $map_id := .Get "map_id" | default "map" -}}
+
+<div id="{{ $map_id }}" style="height: 500px; width: 100%;" data-height="{{ $height }}" data-width="{{ $width }}" data-tms="{{ $tms }}"></div>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var mapElement = document.getElementById('{{ $map_id }}');
+    var height = mapElement.getAttribute('data-height');
+    var width = mapElement.getAttribute('data-width');
+    var tms = mapElement.getAttribute('data-tms') === 'true';
+
+    mapElement.style.height = height;
+    mapElement.style.width = width;
+
+    var map = L.map('{{ $map_id }}').setView([0, 0], 3);
+
+    var baselayer = new L.tileLayer('{{ $layer_url }}', {
+      zoom: 3,
+      tms: tms,
+    }).addTo(map).setZIndex(0);
+  });
+</script>
