@@ -67,3 +67,6 @@ coverage/
 
 # Hugo
 .hugo_build.lock
+
+# Ignored directory
+ignore/

@@ -52,22 +52,34 @@ menu:
   main:
     - identifier: datasets
       name: Datasets
-      pageRef: /docs/datasets
+      pageRef: /datasets
       weight: 1
     - identifier: basemaps
       name: Basemaps
-      pageRef: /docs/basemaps
-      weight: 3
+      pageRef: /basemaps
+      weight: 2
     - identifier: places
       name: Places
-      pageRef: /docs/places
+      pageRef: /places
+      weight: 3
+    - identifier: docs
+      name: Documentation
+      pageRef: /docs
       weight: 4
-    - name: Search
+    - identifier: blog
+      name: Blog
+      pageRef: /blog
+      weight: 5
+    - identifier: about
+      name: About
+      pageRef: /about
       weight: 6
+    - name: Search
+      weight: 7
       params:
         type: search
     - name: GitHub
-      weight: 7
+      weight: 8
       url: "https://github.com/openplanetary/opm-website"
       params:
         icon: github
@@ -94,7 +106,7 @@ params:
       dark: images/logo-dark.svg
       # width: 40
       # height: 20
-      # link: /
+#      link: /
     width: wide
 
   page:
