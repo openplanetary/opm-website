@@ -6,6 +6,17 @@
 
 <div id="{{ $map_id }}" style="height: 500px; width: 100%;" data-height="{{ $height }}" data-width="{{ $width }}" data-tms="{{ $tms }}"></div>
 
+
+<style>
+  img {
+    border-radius: 0 !important;
+  }
+  .hx img {
+    border-radius: 0 !important;
+  }
+</style>
+
+
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     var mapElement = document.getElementById('{{ $map_id }}');

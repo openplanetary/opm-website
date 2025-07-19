@@ -14,6 +14,15 @@
     {{ end }}
   {{ end }}
 
+  <style>
+    img {
+      border-radius: 0 !important;
+    }
+    .hx img {
+      border-radius: 0 !important;
+    }
+  </style>
+
   <div class='hx:mx-auto hx:flex hextra-max-page-width'>
     <article class="hx:w-full hx:break-words hx:flex hx:min-h-[calc(100vh-var(--navbar-height))] hx:min-w-0 hx:justify-center hx:pb-8 hx:pr-[calc(env(safe-area-inset-right)-1.5rem)]">
       <main class="hx:w-full hx:min-w-0 hx:max-w-6xl hx:px-6 hx:pt-4 hx:md:px-12">
@@ -26,7 +35,7 @@
           {{ $tms := index $basemap "TMS Option" }}
           {{ $map_id := printf "map-%s" $filename }}
 
-          {{ partial "leaflet-map.html" (dict "layer_url" $layer_url "tms" $tms "map_id" $map_id "height" "500px" "width" "100%") }}
+          {{ partial "leaflet-map.html" (dict "layer_url" $layer_url "tms" $tms "map_id" $map_id "height" "400px" "width" "100%") }}
 
           <h2>How to Use</h2>
           <h3>XYZ raster tiles URL</h3>
