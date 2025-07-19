@@ -50,7 +50,7 @@
   {
     "Name": "Moon Hillshaded Albedo",
     "mapID": "opm-moon-hillshaded-albedo",
-    "Description": "This basemap is a single raster layer blend between Lunar LOLA Hillshade and Albedo DAM map products. ",
+    "Description": "This basemap is a single raster layer blend between Lunar LOLA Hillshade and Albedo DAM map products.",
     "Type": "Single-Layer Raster",
     "XYZ URL": "https://s3.amazonaws.com/opmbuilder/301_moon/tiles/w/hillshaded-albedo/{z}/{x}/{y}.png",
     "TMS Option": true,
