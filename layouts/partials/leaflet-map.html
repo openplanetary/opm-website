@@ -1,8 +1,8 @@
-{{- $layer_url := .Get "layer_url" -}}
-{{- $height := .Get "height" | default "100%" -}}
-{{- $width := .Get "width" | default "500px" -}}
-{{- $tms := .Get "tms" | default "false" -}}
-{{- $map_id := .Get "map_id" | default "map" -}}
+{{- $layer_url := .layer_url -}}
+{{- $height := .height | default "100%" -}}
+{{- $width := .width | default "500px" -}}
+{{- $tms := .tms | default "false" -}}
+{{- $map_id := .map_id | default "map" -}}
 
 <div id="{{ $map_id }}" style="height: 500px; width: 100%;" data-height="{{ $height }}" data-width="{{ $width }}" data-tms="{{ $tms }}"></div>
 

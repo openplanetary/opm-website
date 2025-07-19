@@ -1,8 +1,7 @@
 [
   {
     "Name": "Mars Colour MOLA Elevation",
-    "Slug": "colour-mola-elevation",
-    "Map ID": "opm-mars-colour-mola-elevation",
+    "mapID": "opm-mars-colour-mola-elevation",
     "Description": "This basemap is a single color-coded raster data layer based on MOLA dataset. ",
     "Type": "Single-Layer Raster",
     "XYZ URL": "http://s3-eu-west-1.amazonaws.com/whereonmars.cartodb.net/mola_color-noshade_global/{z}/{x}/{y}.png",
@@ -18,8 +17,7 @@
   },
   {
     "Name": "Mars Viking MDIM2.1",
-    "Slug": "global-viking-mdim2-1-colorized-mosaic",
-    "Map ID": "opm-mars-viking-mdim21",
+    "mapID": "opm-mars-viking-mdim21",
     "Description": "This basemap is a single raster data layer based on Viking MDIM 2.1 dataset. ",
     "Type": "Single-Layer Raster",
     "XYZ URL": "http://s3-eu-west-1.amazonaws.com/whereonmars.cartodb.net/viking_mdim21_global/{z}/{x}/{y}.png",
@@ -35,8 +33,7 @@
   },
   {
     "Name": "Mars Hillshade",
-    "Slug": "mars-hillshade",
-    "Map ID": "opm-mars-hillshade",
+    "mapID": "opm-mars-hillshade",
     "Description": "This basemap is a single hillshade raster data layer based on MOLA dataset. ",
     "Type": "Single-Layer Raster",
     "XYZ URL": "https://s3.us-east-2.amazonaws.com/opmmarstiles/hillshade-tiles/{z}/{x}/{y}.png",
@@ -52,8 +49,7 @@
   },
   {
     "Name": "Moon Hillshaded Albedo",
-    "Slug": "moon-hillshaded-albedo",
-    "Map ID": "opm-moon-hillshaded-albedo",
+    "mapID": "opm-moon-hillshaded-albedo",
     "Description": "This basemap is a single raster layer blend between Lunar LOLA Hillshade and Albedo DAM map products. ",
     "Type": "Single-Layer Raster",
     "XYZ URL": "https://s3.amazonaws.com/opmbuilder/301_moon/tiles/w/hillshaded-albedo/{z}/{x}/{y}.png",
@@ -69,8 +65,7 @@
   },
   {
     "Name": "OPM Mars Basemap v0.2",
-    "Slug": "opm-mars-basemap-v0-2",
-    "Map ID": "opm-mars-basemap-v0-2",
+    "mapID": "opm-mars-basemap-v0-2",
     "Description": "This basemap of Mars in a combination of multiple raster and vector datasets that provides a characteristic view of the planet for a broader audience.",
     "Type": "Multiple-Layer Raster",
     "XYZ URL": "https://cartocdn-gusc.global.ssl.fastly.net/opmbuilder/api/v1/map/named/opm-mars-basemap-v0-2/all/{z}/{x}/{y}.png",
@@ -92,8 +87,7 @@
   },
   {
     "Name": "OPM Mercury Basemap v0.1 (DRAFT)",
-    "Slug": "opm-mercury-basemap-v0-1-draft",
-    "Map ID": "",
+    "mapID": "opm-mercury-basemap-v0-1-draft",
     "Description": "This DRAFT basemap of Mercury in a combination of multiple raster and vector datasets that provides a characteristic view for a broader audience.",
     "Type": "Multiple-Layer Raster",
     "XYZ URL": "https://cartocdn-gusc.global.ssl.fastly.net/opmbuilder/api/v1/map/named/opm-mercury-basemap-v0-1/all/{z}/{x}/{y}.png",
@@ -109,8 +103,7 @@
   },
   {
     "Name": "OPM Moon Basemap v0.1",
-    "Slug": "opm-moon-basemap-v0-1",
-    "Map ID": "opm-moon-basemap-v0-1",
+    "mapID": "opm-moon-basemap-v0-1",
     "Description": "This basemap of the Moon in a combination of multiple raster and vector datasets that provides a characteristic view for a broader audience.",
     "Type": "Multiple-Layer Raster",
     "XYZ URL": "https://cartocdn-gusc.global.ssl.fastly.net/opmbuilder/api/v1/map/named/opm-moon-basemap-v0-1/all/{z}/{x}/{y}.png",
@@ -132,8 +125,7 @@
   },
   {
     "Name": "Mars Shaded Colour MOLA Elevation",
-    "Slug": "shaded-colour-mola-elevation",
-    "Map ID": "opm-mars-shaded-colour-mola-elevation",
+    "mapID": "opm-mars-shaded-colour-mola-elevation",
     "Description": "This basemap is a single shared color-coded raster data layer based on MOLA dataset. ",
     "Type": "Single-Layer Raster",
     "XYZ URL": "http://s3-eu-west-1.amazonaws.com/whereonmars.cartodb.net/mola-color/{z}/{x}/{y}.png",
@@ -149,8 +141,7 @@
   },
   {
     "Name": "Mars Shaded Grayscale MOLA Elevation",
-    "Slug": "shaded-grayscale-mola-elevation",
-    "Map ID": "opm-mars-shaded-grayscale-mola-elevation",
+    "mapID": "opm-mars-shaded-grayscale-mola-elevation",
     "Description": "This basemap is a single shared grayscale raster data layer based on MOLA dataset. ",
     "Type": "Single-Layer Raster",
     "XYZ URL": "http://s3-eu-west-1.amazonaws.com/whereonmars.cartodb.net/mola-gray/{z}/{x}/{y}.png",
@@ -166,8 +157,7 @@
   },
   {
     "Name": "Mars Shaded Surface Texture",
-    "Slug": "shaded-mars-surface-texture",
-    "Map ID": "opm-mars-colour-celestia",
+    "mapID": "opm-mars-colour-celestia",
     "Description": "This basemap is a single Mars texture raster data layer based on a Celestia community dataset. ",
     "Type": "Single-Layer Raster",
     "XYZ URL": "http://s3-eu-west-1.amazonaws.com/whereonmars.cartodb.net/celestia_mars-shaded-16k_global/{z}/{x}/{y}.png",
