@@ -158,7 +158,7 @@
   {
     "Name": "Mars Shaded Surface Texture",
     "mapID": "opm-mars-colour-celestia",
-    "Description": "This basemap is a single Mars texture raster data layer based on a Celestia community dataset. ",
+    "Description": "This basemap is a single Mars texture raster data layer based on a Celestia community dataset.",
     "Type": "Single-Layer Raster",
     "XYZ URL": "http://s3-eu-west-1.amazonaws.com/whereonmars.cartodb.net/celestia_mars-shaded-16k_global/{z}/{x}/{y}.png",
     "TMS Option": true,
