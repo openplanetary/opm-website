@@ -126,7 +126,7 @@
   {
     "Name": "Mars Shaded Colour MOLA Elevation",
     "mapID": "opm-mars-shaded-colour-mola-elevation",
-    "Description": "This basemap is a single shared color-coded raster data layer based on MOLA dataset. ",
+    "Description": "This basemap is a single shared color-coded raster data layer based on MOLA dataset.",
     "Type": "Single-Layer Raster",
     "XYZ URL": "http://s3-eu-west-1.amazonaws.com/whereonmars.cartodb.net/mola-color/{z}/{x}/{y}.png",
     "TMS Option": true,
