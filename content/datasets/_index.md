@@ -1,7 +1,6 @@
 ---
-draft: false
-title: 'Datasets'
+title: Datasets
+weight: 3
 ---
 
-We curate an open repository of datasets related to planetary geography, topography, geology, weather, climate,
-scientific missions and discoveries, robotic and human exploration.
+This page lists all available datasets organized by planetary body.

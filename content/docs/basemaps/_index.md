@@ -1,10 +1,10 @@
 ---
 title: 'Basemaps'
-weight: 2
+weight: 4
 loadLeafletResources: true
 ---
 
-We are designing and making accessible a collection of basemaps that can be used for the development of planetary web mapping applications. All our basemaps are currently XYZ-based Web Mercator projected tiles that can be fetched using web clients such as Leaflet or OpenLayers.
+We are designing and making accessible a collection of basemaps that can be used for the development of planetary web map applications. All our basemaps are currently XYZ-based Web Mercator projected tiles that can be fetched using web clients such as Leaflet or OpenLayers.
 
 ## Interactive map examples
 

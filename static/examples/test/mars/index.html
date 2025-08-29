@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>OPM Mars basemaps</title>
+    <meta property="og:description" content="Use a custom layer to draw simple WebGL content on a globe."/>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel='stylesheet' href='https://unpkg.com/maplibre-gl@5.6.2/dist/maplibre-gl.css'/>
+    <script src='https://unpkg.com/maplibre-gl@5.6.2/dist/maplibre-gl.js'></script>
+    <script src="https://www.unpkg.com/maplibre-gl-opacity@1.8.0/build/maplibre-gl-opacity.umd.js"></script>
+    <link rel="stylesheet" href="https://www.unpkg.com/maplibre-gl-opacity@1.8.0/build/maplibre-gl-opacity.css"/>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #232323
+        }
+
+        html, body, #map {
+            height: 100%;
+        }
+
+        #project {
+            display: block;
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translate(-50%);
+            width: 50%;
+            height: 40px;
+            padding: 10px;
+            border: none;
+            border-radius: 3px;
+            font-size: 12px;
+            text-align: center;
+            color: #fff;
+            background: #ee8a65;
+        }
+    </style>
+</head>
+<body>
+<div id="map"></div>
+<br/>
+<button id="project">Toggle projection</button>
+<script>
+    const map = new maplibregl.Map({
+        container: 'map',
+        style: {
+            'version': 8,
+            'sources': {
+                'opm_mars_basemap_v02': {
+                    'type': 'raster',
+                    'tiles': [
+                        'https://s3-eu-west-1.amazonaws.com/whereonmars.cartodb.net/viking_mdim21_global/{z}/{x}/{y}.png'
+                        // 'https://cartocdn-gusc.global.ssl.fastly.net/opmbuilder/api/v1/map/named/opm-mars-basemap-v0-2/all/{z}/{x}/{y}.png'
+                        // 'https://cartocdn-gusc.global.ssl.fastly.net/opmbuilder/api/v1/map/named/opm-moon-basemap-v0-1/all/{z}/{x}/{y}.png'
+                    ],
+                    'tileSize': 256,
+                    'attribution': 'Map tiles by <a target="_blank" href="https://openplanetarymap.org/">OpenPlanetaryMap</a>'
+                }
+            },
+            'layers': [
+                {
+                    'id': 'opm_mars_basemap_v02',
+                    'type': 'raster',
+                    'source': 'opm_mars_basemap_v02',
+                    'minzoom': 0,
+                    'maxzoom': 22
+                }
+            ]
+        },
+        zoom: 3,
+        center: [0.0, 0.0],
+        canvasContextAttributes: {antialias: true}
+    });
+
+    map.on('load', function () {
+        // opm-mars-viking-mdim21
+        map.addSource('opm_mars_viking_mdim21', {
+            type: 'raster',
+            tiles: ['https://s3-eu-west-1.amazonaws.com/whereonmars.cartodb.net/viking_mdim21_global/{z}/{x}/{y}.png'],
+            tileSize: 256,
+            attribution: 'Map tiles by <a target="_blank" href="https://openplanetarymap.org/">OpenPlanetaryMap</a>'
+        });
+        map.addLayer({
+            id: 'opm_mars_viking_mdim21',
+            type: 'raster',
+            source: 'opm_mars_viking_mdim21',
+            minzoom: 0,
+            maxzoom: 22,
+        });
+
+        // BaseLayer
+        const mapBaseLayer = {
+            opm_mars_basemap_v02: 'OPM Mars Basemap v0.2',
+            opm_mars_viking_mdim21: 'Mars Viking MDIM2.1'
+        };
+
+        // OverLayer
+        const mapOverLayer = {};
+
+        // OpacityControl
+        let opacityControl = new OpacityControl({
+            baseLayers: mapBaseLayer,
+            overLayers: mapOverLayer,
+            opacityControl: false,
+        });
+        map.addControl(opacityControl, 'top-right');
+    });
+
+    map.on('style.load', () => {
+        map.setProjection({
+            type: 'globe', // Set projection to globe
+        });
+    });
+
+    document.getElementById('project').addEventListener('click', () => {
+        // Toggle projection
+        const currentProjection = map.getProjection();
+        map.setProjection({
+            type: currentProjection.type === 'globe' ? 'mercator' : 'globe',
+        });
+    });
+
+</script>
+</body>
+</html>

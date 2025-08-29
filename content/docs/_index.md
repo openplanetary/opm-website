@@ -2,4 +2,6 @@
 title: 'Documentation'
 ---
 
-_This is a placeholder for documentation._
+Welcome to the OPM documentation!
+
+This documentation is intended for contributors and users of OPM data and services.

@@ -77,11 +77,11 @@
     "Static Map Image": "https://uploads-ssl.webflow.com/5a621bf894d1cf000155a6d3/5d00e56da38ae083a142ec5f_opmbuilder_opm_mars_basemap_v0_2_20190612122447.png",
     "Target": "mars",
     "Datasets": [
-      "mars-nomenclature-polygons",
-      "mars-topography-contours-lines",
-      "mars-tes-albedo-7-classes",
-      "color-coded-topography",
-      "hillshade-basemap"
+      "opm_499_mars_nomenclature_polygons",
+      "opm_499_mars_contours_200m_lines",
+      "opm_499_mars_albedo_tes_7classes",
+      "opm_499_mars_contours_200m_polygons",
+      "opm-mars-hillshade"
     ],
     "Preliminary": ""
   },
@@ -115,11 +115,11 @@
     "Static Map Image": "https://uploads-ssl.webflow.com/5a621bf894d1cf000155a6d3/5d00e5552bca9361147496b9_opmbuilder_opm_moon_basemap_v0_1_20190612122200.png",
     "Target": "the-moon",
     "Datasets": [
-      "luna-sites",
-      "moon-apollo-sites",
-      "moon-nomenclature-polygons",
-      "moon-topography-contours-1km-interval",
-      "moon-hillshaded-albedo"
+      "opm_301_luna_sites",
+      "opm_301_apollo_sites",
+      "opm_301_moon_nomenclature_polygons",
+      "opm_301_moon_contours_polygons_1km_interval",
+      "moon_hillshaded_albedo"
     ],
     "Preliminary": ""
   },

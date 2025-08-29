@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "maplibre-gl-layer": "^0.2.2"
+  }
+}

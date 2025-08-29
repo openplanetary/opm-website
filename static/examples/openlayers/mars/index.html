@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>OPM Mars Basemaps with OpenLayers</title>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v7.4.0/ol.css">
+    <script src="https://cdn.jsdelivr.net/npm/ol@v7.4.0/dist/ol.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #232323;
+        }
+
+        html, body, #map {
+            height: 100%;
+            width: 100%;
+        }
+
+        .layer-switcher {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 5px;
+            max-height: 80%;
+            overflow-y: auto;
+        }
+
+        .layer-switcher h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .layer-item {
+            margin-bottom: 5px;
+        }
+
+        .layer-item input {
+            margin-right: 5px;
+        }
+
+        .ol-attribution {
+            background: rgba(255, 255, 255, 0.8);
+        }
+    </style>
+</head>
+<body>
+<div id="map"></div>
+<div id="layer-switcher" class="layer-switcher">
+    <h3>Mars Basemaps</h3>
+    <div id="layer-list"></div>
+</div>
+<script>
+    // Define Mars basemaps from basemaps.json
+    function getMarsBasemaps() {
+        return [
+            {
+                "Name": "Mars Colour MOLA Elevation",
+                "XYZ URL": "http://s3-eu-west-1.amazonaws.com/whereonmars.cartodb.net/mola_color-noshade_global/{z}/{x}/{y}.png",
+                "TMS Option": true,
+                "Attribution": "NASA/MOLA"
+            },
+            {
+                "Name": "Mars Viking MDIM2.1",
+                "XYZ URL": "http://s3-eu-west-1.amazonaws.com/whereonmars.cartodb.net/viking_mdim21_global/{z}/{x}/{y}.png",
+                "TMS Option": true,
+                "Attribution": "NASA/Viking/USGS"
+            },
+            {
+                "Name": "Mars Hillshade",
+                "XYZ URL": "https://s3.us-east-2.amazonaws.com/opmmarstiles/hillshade-tiles/{z}/{x}/{y}.png",
+                "TMS Option": true,
+                "Attribution": "NASA/MOLA"
+            },
+            {
+                "Name": "OPM Mars Basemap v0.2",
+                "XYZ URL": "https://cartocdn-gusc.global.ssl.fastly.net/opmbuilder/api/v1/map/named/opm-mars-basemap-v0-2/all/{z}/{x}/{y}.png",
+                "TMS Option": false,
+                "Attribution": "OpenPlaneraryMap"
+            },
+            {
+                "Name": "Mars Shaded Colour MOLA Elevation",
+                "XYZ URL": "http://s3-eu-west-1.amazonaws.com/whereonmars.cartodb.net/mola-color/{z}/{x}/{y}.png",
+                "TMS Option": true,
+                "Attribution": "NASA/MOLA"
+            },
+            {
+                "Name": "Mars Shaded Grayscale MOLA Elevation",
+                "XYZ URL": "http://s3-eu-west-1.amazonaws.com/whereonmars.cartodb.net/mola-gray/{z}/{x}/{y}.png",
+                "TMS Option": true,
+                "Attribution": "NASA/MOLA"
+            },
+            {
+                "Name": "Mars Shaded Surface Texture",
+                "XYZ URL": "http://s3-eu-west-1.amazonaws.com/whereonmars.cartodb.net/celestia_mars-shaded-16k_global/{z}/{x}/{y}.png",
+                "TMS Option": true,
+                "Attribution": "Celestia/praesepe"
+            }
+        ];
+    }
+
+    // Initialize the map
+    const map = new ol.Map({
+        target: 'map',
+        view: new ol.View({
+            center: [0, 0],
+            zoom: 3,
+            maxZoom: 18
+        })
+    });
+
+    // Create layer group to hold all basemaps
+    const basemapGroup = new ol.layer.Group({
+        layers: []
+    });
+    map.addLayer(basemapGroup);
+
+    // Function to create a layer from basemap data
+    function createLayer(basemap, visible = false) {
+        return new ol.layer.Tile({
+            title: basemap.Name,
+            visible: visible,
+            source: new ol.source.XYZ({
+                url: basemap["XYZ URL"],
+                tileSize: 256,
+                attributions: basemap.Attribution,
+                tilePixelRatio: 1,
+                crossOrigin: 'anonymous',
+                wrapX: true,
+                tileGrid: basemap["TMS Option"] ? 
+                    new ol.tilegrid.TileGrid({
+                        extent: ol.proj.get('EPSG:3857').getExtent(),
+                        origin: [-20037508.342789244, -20037508.342789244],
+                        resolutions: Array.from({length: 19}, (_, i) => 156543.03392804097 / Math.pow(2, i))
+                    }) : undefined
+            })
+        });
+    }
+
+    // Function to create the layer switcher UI
+    function createLayerSwitcher(basemaps) {
+        const layerList = document.getElementById('layer-list');
+        layerList.innerHTML = '';
+
+        basemaps.forEach((basemap, index) => {
+            const layerItem = document.createElement('div');
+            layerItem.className = 'layer-item';
+
+            const radio = document.createElement('input');
+            radio.type = 'radio';
+            radio.name = 'basemap';
+            radio.id = `basemap-${index}`;
+            radio.value = index;
+            radio.checked = index === 0;
+
+            const label = document.createElement('label');
+            label.htmlFor = `basemap-${index}`;
+            label.textContent = basemap.Name;
+
+            layerItem.appendChild(radio);
+            layerItem.appendChild(label);
+            layerList.appendChild(layerItem);
+
+            radio.addEventListener('change', () => {
+                const layers = basemapGroup.getLayers().getArray();
+                layers.forEach((layer, i) => {
+                    layer.setVisible(i === index);
+                });
+            });
+        });
+    }
+
+    // Initialize the map with basemaps
+    function initMap() {
+        const marsBasemaps = getMarsBasemaps();
+
+        // Add layers to the map
+        marsBasemaps.forEach((basemap, index) => {
+            const layer = createLayer(basemap, index === 0);
+            basemapGroup.getLayers().push(layer);
+        });
+
+        // Create the layer switcher UI
+        createLayerSwitcher(marsBasemaps);
+    }
+
+    // Start the initialization
+    initMap();
+</script>
+</body>
+</html>

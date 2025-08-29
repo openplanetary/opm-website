@@ -1,9 +1,12 @@
 {{ define "main" }}
   <div class='hx:mx-auto hx:flex hextra-max-page-width'>
+    {{ partial "sidebar.html" (dict "context" .) }}
+    {{ partial "custom-toc.html" . }}
     <article class="hx:w-full hx:break-words hx:flex hx:min-h-[calc(100vh-var(--navbar-height))] hx:min-w-0 hx:justify-center hx:pb-8 hx:pr-[calc(env(safe-area-inset-right)-1.5rem)]">
       <main class="hx:w-full hx:min-w-0 hx:max-w-6xl hx:px-6 hx:pt-4 hx:md:px-12">
+        {{ partial "breadcrumb.html" . }}
         <div class="content">
-          <h1>Basemaps</h1>
+          <h1 id="basemaps">Basemaps</h1>
           <p>This page lists all available planetary basemaps. Click on a basemap name to view more details.</p>
 
           <div class="hx:overflow-x-auto">
@@ -52,7 +55,7 @@
             </table>
           </div>
 
-          <h2 class="hx:mt-8">Targets</h2>
+          <h2 id="targets" class="hx:mt-8">Targets</h2>
           <p>Basemaps are available for the following planetary bodies:</p>
           <ul>
             {{ $targets := slice }}
@@ -77,4 +80,5 @@
       </main>
     </article>
   </div>
+          {{ partial "custom-toc-script.html" . }}
 {{ end }}

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>OPM Mars Basemaps with MapLibre GL JS</title>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://unpkg.com/maplibre-gl@5.6.2/dist/maplibre-gl.css" rel="stylesheet" />
+    <script src="https://unpkg.com/maplibre-gl@5.6.2/dist/maplibre-gl.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #232323;
+            font-family: 'Inter', sans-serif;
+        }
+
+        html, body, #map {
+            height: 100%;
+            width: 100%;
+        }
+
+        .layer-switcher {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 5px;
+            max-height: 80%;
+            overflow-y: auto;
+            z-index: 1;
+        }
+
+        .layer-switcher h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .layer-item {
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .layer-item input {
+            margin-right: 5px;
+        }
+
+        /* Projection toggle control styles */
+        .maplibregl-ctrl-projection {
+            background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"%3E%3Ccircle cx="10" cy="10" r="9" fill="none" stroke="%23333" stroke-width="2"/%3E%3C/svg%3E');
+            background-size: 17px;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .maplibregl-ctrl-projection-globe {
+            background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"%3E%3Ccircle cx="10" cy="10" r="9" fill="none" stroke="%23333" stroke-width="2"/%3E%3Cpath d="M2,10 h16 M10,2 v16 M4.5,4.5 Q10,19 15.5,4.5 Q1,10 19,10" fill="none" stroke="%23333" stroke-width="1.5"/%3E%3C/svg%3E');
+        }
+    </style>
+</head>
+<body>
+<div id="map"></div>
+<div id="layer-switcher" class="layer-switcher">
+    <h3>Mars Basemaps</h3>
+    <div id="layer-list"></div>
+</div>
+<script>
+    // Define Mars basemaps from basemaps.json
+    function getMarsBasemaps() {
+        return [
+            {
+                "Name": "Mars Colour MOLA Elevation",
+                "mapID": "opm-mars-colour-mola-elevation",
+                "XYZ URL": "http://s3-eu-west-1.amazonaws.com/whereonmars.cartodb.net/mola_color-noshade_global/{z}/{x}/{y}.png",
+                "TMS Option": true,
+                "Attribution": "NASA/MOLA"
+            },
+            {
+                "Name": "Mars Viking MDIM2.1",
+                "mapID": "opm-mars-viking-mdim21",
+                "XYZ URL": "http://s3-eu-west-1.amazonaws.com/whereonmars.cartodb.net/viking_mdim21_global/{z}/{x}/{y}.png",
+                "TMS Option": true,
+                "Attribution": "NASA/Viking/USGS"
+            },
+            {
+                "Name": "Mars Hillshade",
+                "mapID": "opm-mars-hillshade",
+                "XYZ URL": "https://s3.us-east-2.amazonaws.com/opmmarstiles/hillshade-tiles/{z}/{x}/{y}.png",
+                "TMS Option": true,
+                "Attribution": "NASA/MOLA"
+            },
+            {
+                "Name": "OPM Mars Basemap v0.2",
+                "mapID": "opm-mars-basemap-v0-2",
+                "XYZ URL": "https://cartocdn-gusc.global.ssl.fastly.net/opmbuilder/api/v1/map/named/opm-mars-basemap-v0-2/all/{z}/{x}/{y}.png",
+                "TMS Option": false,
+                "Attribution": "OpenPlaneraryMap"
+            },
+            {
+                "Name": "Mars Shaded Colour MOLA Elevation",
+                "mapID": "opm-mars-shaded-colour-mola-elevation",
+                "XYZ URL": "http://s3-eu-west-1.amazonaws.com/whereonmars.cartodb.net/mola-color/{z}/{x}/{y}.png",
+                "TMS Option": true,
+                "Attribution": "NASA/MOLA"
+            },
+            {
+                "Name": "Mars Shaded Grayscale MOLA Elevation",
+                "mapID": "opm-mars-shaded-grayscale-mola-elevation",
+                "XYZ URL": "http://s3-eu-west-1.amazonaws.com/whereonmars.cartodb.net/mola-gray/{z}/{x}/{y}.png",
+                "TMS Option": true,
+                "Attribution": "NASA/MOLA"
+            },
+            {
+                "Name": "Mars Shaded Surface Texture",
+                "mapID": "opm-mars-colour-celestia",
+                "XYZ URL": "http://s3-eu-west-1.amazonaws.com/whereonmars.cartodb.net/celestia_mars-shaded-16k_global/{z}/{x}/{y}.png",
+                "TMS Option": true,
+                "Attribution": "Celestia/praesepe"
+            }
+        ];
+    }
+
+    // Initialize the map
+    const map = new maplibregl.Map({
+        container: 'map',
+        style: {
+            version: 8,
+            sources: {},
+            layers: []
+        },
+        center: [0, 0],
+        zoom: 3,
+        maxZoom: 18
+    });
+
+    // Add attribution control
+    map.addControl(new maplibregl.AttributionControl({
+        customAttribution: '<a href="https://openplanetarymap.org/">OpenPlanetaryMap</a>'
+    }));
+
+    // Add navigation control
+    map.addControl(new maplibregl.NavigationControl(), 'top-left');
+
+    // Create a custom control for projection toggle
+    class ProjectionToggleControl {
+        constructor() {
+            this._isGlobe = false;
+        }
+
+        onAdd(map) {
+            this._map = map;
+            this._container = document.createElement('div');
+            this._container.className = 'maplibregl-ctrl maplibregl-ctrl-group';
+
+            this._btn = document.createElement('button');
+            this._btn.className = 'maplibregl-ctrl-icon maplibregl-ctrl-projection';
+            this._btn.type = 'button';
+            this._btn.title = 'Switch to Globe projection';
+            this._btn.setAttribute('aria-label', 'Switch to Globe projection');
+
+            this._btn.addEventListener('click', () => {
+                // Get current projection
+                const currentProjection = map.getProjection();
+
+                // Check if currentProjection exists and has a type property
+                let newProjection = 'globe'; // Default to globe if we can't determine current
+                if (currentProjection && currentProjection.type) {
+                    newProjection = currentProjection.type === 'globe' ? 'mercator' : 'globe';
+                }
+
+                map.setProjection({
+                    type: newProjection
+                });
+
+                if (newProjection === 'globe') {
+                    this._btn.className = 'maplibregl-ctrl-icon maplibregl-ctrl-projection maplibregl-ctrl-projection-globe';
+                    this._btn.title = 'Switch to Mercator projection';
+                    this._btn.setAttribute('aria-label', 'Switch to Mercator projection');
+                } else {
+                    this._btn.className = 'maplibregl-ctrl-icon maplibregl-ctrl-projection';
+                    this._btn.title = 'Switch to Globe projection';
+                    this._btn.setAttribute('aria-label', 'Switch to Globe projection');
+                }
+            });
+
+            this._container.appendChild(this._btn);
+            return this._container;
+        }
+
+        onRemove() {
+            this._container.parentNode.removeChild(this._container);
+            this._map = undefined;
+        }
+    }
+
+    // Add projection toggle control
+    map.addControl(new ProjectionToggleControl(), 'top-left');
+
+    // Function to create a raster source and layer from basemap data
+    function addBasemapLayer(basemap, visible = false) {
+        const sourceId = basemap.mapID;
+        const layerId = `${sourceId}-layer`;
+
+        // Create a raster tile source
+        map.addSource(sourceId, {
+            type: 'raster',
+            tiles: [basemap["XYZ URL"]],
+            tileSize: 256,
+            attribution: basemap.Attribution,
+            scheme: basemap["TMS Option"] ? 'tms' : 'xyz'
+        });
+
+        // Add a raster layer for this source
+        map.addLayer({
+            id: layerId,
+            type: 'raster',
+            source: sourceId,
+            layout: {
+                visibility: visible ? 'visible' : 'none'
+            }
+        });
+
+        return layerId;
+    }
+
+    // Function to create the layer switcher UI
+    function createLayerSwitcher(basemaps, layerIds) {
+        const layerList = document.getElementById('layer-list');
+        layerList.innerHTML = '';
+
+        basemaps.forEach((basemap, index) => {
+            const layerItem = document.createElement('div');
+            layerItem.className = 'layer-item';
+
+            const radio = document.createElement('input');
+            radio.type = 'radio';
+            radio.name = 'basemap';
+            radio.id = `basemap-${index}`;
+            radio.value = index;
+            radio.checked = index === 0;
+
+            const label = document.createElement('label');
+            label.htmlFor = `basemap-${index}`;
+            label.textContent = basemap.Name;
+
+            layerItem.appendChild(radio);
+            layerItem.appendChild(label);
+            layerList.appendChild(layerItem);
+
+            radio.addEventListener('change', () => {
+                // Hide all layers
+                layerIds.forEach(id => {
+                    map.setLayoutProperty(id, 'visibility', 'none');
+                });
+
+                // Show the selected layer
+                map.setLayoutProperty(layerIds[index], 'visibility', 'visible');
+            });
+        });
+    }
+
+    // Set initial projection when style is loaded
+    map.on('style.load', () => {
+        map.setProjection({
+            type: 'mercator'
+        });
+    });
+
+    // Initialize the map with basemaps
+    map.on('load', function() {
+        const marsBasemaps = getMarsBasemaps();
+        const layerIds = [];
+
+        // Add layers to the map
+        marsBasemaps.forEach((basemap, index) => {
+            const layerId = addBasemapLayer(basemap, index === 0);
+            layerIds.push(layerId);
+        });
+
+        // Create the layer switcher UI
+        createLayerSwitcher(marsBasemaps, layerIds);
+    });
+</script>
+</body>
+</html>

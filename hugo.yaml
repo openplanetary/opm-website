@@ -58,18 +58,6 @@ menu:
       name: Basemaps
       pageRef: /basemaps
       weight: 2
-    - identifier: places
-      name: Places
-      pageRef: /places
-      weight: 3
-    - identifier: docs
-      name: Documentation
-      pageRef: /docs
-      weight: 4
-    - identifier: blog
-      name: Blog
-      pageRef: /blog
-      weight: 5
     - identifier: about
       name: About
       pageRef: /about

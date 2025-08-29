@@ -1,6 +1,6 @@
 ---
 title: 'Places'
-weight: 3
+weight: 5
 ---
 
-We develop geocoding and georeferencing APIs that will make it easy to discover, search, share, discuss and crowdsource datasets of places on Mars, the Moon and other planetary bodies.
+We're planning to develop geocoding and georeferencing APIs that will make it easy to discover, search, share, discuss and crowdsource datasets of places on Mars, the Moon and other planetary bodies.

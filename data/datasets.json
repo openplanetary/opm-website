@@ -1,0 +1,67 @@
+[
+  {
+    "name": "Mars Nomenclature (polygons)",
+    "id": "opm_499_mars_nomenclature_polygons",
+    "target": "mars",
+    "description": "Mars IAU nomenclature polygons.",
+    "carto_url": "https://openplanetary.carto.com/u/opmbuilder/dataset/opm_499_mars_nomenclature_polygons",
+    "attribution": "IAU/USGS/OPM"
+  },
+  {
+    "name": "Mars Topography Contours (lines)",
+    "id": "opm_499_mars_contours_200m_lines",
+    "target": "mars",
+    "description": "Mars topography contours lines.",
+    "carto_url": "https://openplanetary.carto.com/u/opmbuilder/dataset/opm_499_mars_contours_200m_lines",
+    "attribution": "MOLA/USGS/OPM"
+  },
+  {
+    "name": "Mars Topography Contours (polygons)",
+    "id": "opm_499_mars_contours_200m_polygons",
+    "target": "mars",
+    "description": "Mars topography contours polygons.",
+    "carto_url": "https://openplanetary.carto.com/u/opmbuilder/dataset/opm_499_mars_contours_200m_polygons",
+    "attribution": "MOLA/USGS/OPM"
+  },
+  {
+    "name": "Mars TES Albedo (7 classes)",
+    "id": "opm_499_mars_albedo_tes_7classes",
+    "target": "mars",
+    "description": "Mars TES Albedo.",
+    "carto_url": "https://openplanetary.carto.com/u/opmbuilder/dataset/opm_499_mars_albedo_tes_7classes",
+    "attribution": "TES/USGS/OPM"
+  },
+  {
+    "name": "Moon Nomenclature (polygons)",
+    "id": "opm_301_moon_nomenclature_polygons",
+    "target": "moon",
+    "description": "Moon IAU Nomenclature polygons",
+    "carto_url": "https://openplanetary.carto.com/u/opmbuilder/dataset/opm_301_moon_nomenclature_polygons",
+    "attribution": "IAS/USGS/OPM"
+  },
+  {
+    "name": "Moon Topography Contours (1km interval)",
+    "id": "opm_301_moon_contours_polygons_1km_interval",
+    "target": "moon",
+    "description": "Moon Topography Contours (1km interval).",
+    "carto_url": "https://openplanetary.carto.com/u/opmbuilder/dataset/opm_301_moon_contours_polygons_1km_interval",
+    "attribution": "IAS/USGS/OPM"
+  },
+  {
+    "name": "Moon Luna Sites",
+    "id": "opm_301_luna_sites",
+    "target": "moon",
+    "description": "Moon Luna Sites.",
+    "carto_url": "https://openplanetary.carto.com/u/opmbuilder/dataset/opm_301_luna_sites",
+    "attribution": "OPM"
+  },
+  {
+    "name": "Moon Apollo Sites",
+    "id": "opm_301_apollo_sites",
+    "target": "moon",
+    "description": "Moon Apollo Sites.",
+    "carto_url": "https://openplanetary.carto.com/u/opmbuilder/dataset/opm_301_apollo_sites",
+    "attribution": "OPM"
+  }
+]
+
