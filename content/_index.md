@@ -35,10 +35,10 @@ layout: hextra-home
     link="/basemaps"
   >}}
   {{< hextra/feature-card
-    title=""
-    icon=""
+    title="Places"
+    icon="location-marker"
     subtitle="We also intend to develop geocoding and georeferencing APIs that will make it easy to discover, search, share, discuss, and crowdsource datasets of places on Mars, the Moon, and other planetary bodies."
-    link="/places"
+    link=""
   >}}
 {{< /hextra/feature-grid >}}
 
@@ -123,19 +123,19 @@ They support us and make our work possible.</p>
 
 {{< hextra/feature-grid >}}
   {{< hextra/feature-card
-    image="images/openplanetary.png"
+    image="images/openplanetary.svg"
     link="https://www.openplanetary.org/"
-    style="height:200px; transform: scale(0.8); border-width:0px;"
+    style="height:200px; border-width:0px; display:flex; align-items:center; justify-content:center;"
   >}}
   {{< hextra/feature-card
-    image="images/carto.png"
+    image="images/carto.svg"
     link="https://carto.com/"
-    style="height:200px; transform: scale(0.8); border-width:0px;"
+    style="height:200px; border-width:0px; display:flex; align-items:center; justify-content:center;"
   >}}
   {{< hextra/feature-card
-    image="images/maptiler.png"
+    image="images/maptiler.svg"
     link="https://www.maptiler.com/"
-    style="height:200px; transform: scale(0.8); border-width:0px;"
+    style="height:200px; border-width:0px; display:flex; align-items:center; justify-content:center;"
   >}}
 {{< /hextra/feature-grid >}}
   
