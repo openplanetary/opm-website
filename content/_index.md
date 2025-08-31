@@ -11,14 +11,14 @@ layout: hextra-home
 {{< /hextra/hero-headline >}}
 </div>
 
-<div class="hx:mb-12">
+<div class="hx:mb-8">
 {{< hextra/hero-subtitle >}}
-  OpenPlanetaryMap is a community project to enable space enthusiasts and students, planetary researchers and mappers, educators and storytellers to easily and collaboratively create and share location-based knowledge and maps of planets and planetary bodies.
+  OpenPlanetaryMap is an open-source community project to enable planetary researchers, space enthusiasts, and storytellers to easily create and share location-based knowledge and maps of planets and moons in our Solar System.
 {{< /hextra/hero-subtitle >}}
 </div>
 
-<div class="hx:mb-6">
-{{< hextra/hero-button text="Browse Basemaps" link="basemaps" >}}
+<div class="hx:mb-8">
+{{< hextra/hero-button text="Browse Basemaps" link="basemaps" style="background-color:#cb6e55;" >}}
 </div>
 
 {{< hextra/feature-grid >}}
@@ -37,20 +37,18 @@ layout: hextra-home
   {{< hextra/feature-card
     title=""
     icon=""
-    subtitle="We also intend to develop geocoding and georeferencing APIs that will make it easy to discover, search, share, discuss and crowdsource datasets of places on Mars, the Moon and other planetary bodies."
+    subtitle="We also intend to develop geocoding and georeferencing APIs that will make it easy to discover, search, share, discuss, and crowdsource datasets of places on Mars, the Moon, and other planetary bodies."
     link="/places"
   >}}
 {{< /hextra/feature-grid >}}
 
-<div class="hx:mt-4"></div>
+<div class="hx:mt-12"></div>
 
-<div class="hx:w-full hx:flex hx:flex-col hx:items-center hx:mt-6 hx:mb-6">
+<div class="hx:w-full hx:flex hx:flex-col hx:items-center">
 
-<div class="hx:text-lg">
 {{< hextra/hero-section >}}
 Showcase
 {{< /hextra/hero-section >}}
-</div>
 
 <p class="hx:mt-1 hx:mb-4 hx:text-center hx:text-lg hx:text-gray-500 hx:dark:text-gray-400">
 Web map interfaces using OPM basemaps.
@@ -59,27 +57,12 @@ Web map interfaces using OPM basemaps.
 </div>
 
 {{< cards >}}
-  {{< card
-        link="https://psa.esa.int"
-        title="ESA's Planetary Science Archive (PSA)"
-        subtitle="Web interface for accessing raw, calibrated, and derived data from the European Space Agency’s planetary missions."
-        image="images/esa_psa.png"
-        imageStyle="object-fit:cover; aspect-ratio:16/9;"
-  >}}
 
   {{< card
-        link="https://pdssp.ias.universite-paris-saclay.fr"
-        title="Pôle de Données et Services Surfaces Planétaires (PDSSP)"
-        subtitle="Web interface for accessing, visualising, and analysing planetary science data distributed across French's laboratories."
-        image="images/pdssp.png"
-        imageStyle="object-fit:cover; aspect-ratio:16/9;"
-  >}}
-
-  {{< card
-        link="https://observations.cassis.unibe.ch/"
-        title="TGO/CaSSIS Observations"
-        subtitle="Web interface for accessing the ESA's Trace Gas Orbiter CaSSIS instrument observational data."
-        image="images/cassis_observations.png"
+        link="https://muted.uni-muenster.de"
+        title="Multi-temporal Database of Planetary Image Data (MUTED)"
+        subtitle="Web interface to identify the spatial and temporal coverage of planetary image data from Mars, Moon, and Mercury."
+        image="images/muted.png"
         imageStyle="object-fit:cover; aspect-ratio:16/9;"
   >}}
 
@@ -92,6 +75,22 @@ Web map interfaces using OPM basemaps.
   >}}
 
   {{< card
+        link="https://psa.esa.int"
+        title="ESA's Planetary Science Archive (PSA)"
+        subtitle="Web interface for accessing raw, calibrated, and derived data from the European Space Agency’s planetary missions."
+        image="images/esa_psa.png"
+        imageStyle="object-fit:cover; aspect-ratio:16/9;"
+  >}}
+
+  {{< card
+        link="https://observations.cassis.unibe.ch/"
+        title="TGO/CaSSIS Observations"
+        subtitle="Web interface for accessing the ESA's Trace Gas Orbiter CaSSIS instrument observational data."
+        image="images/cassis_observations.png"
+        imageStyle="object-fit:cover; aspect-ratio:16/9;"
+  >}}
+
+  {{< card
         link="https://geosketch.io/moon/"
         title="Geosketch Moon"
         subtitle="Web interface for collaborative sharing of geospatial snippets via Qgis WKT copy-paste."
@@ -100,14 +99,45 @@ Web map interfaces using OPM basemaps.
   >}}
 
   {{< card
-        link="https://muted.uni-muenster.de"
-        title="Multi-temporal Database of Planetary Image Data (MUTED)"
-        subtitle="Web interface to identify the spatial and temporal coverage of planetary image data from Mars, Moon, and Mercury."
-        image="images/muted.png"
+        link="https://pdssp.ias.universite-paris-saclay.fr"
+        title="Pôle de Données et Services Surfaces Planétaires (PDSSP)"
+        subtitle="Web interface for accessing, visualising, and analysing planetary science data distributed across French's laboratories."
+        image="images/pdssp.png"
         imageStyle="object-fit:cover; aspect-ratio:16/9;"
   >}}
-
+ 
 {{< /cards >}}
 
-<div class="hx:mt-4"></div>
+<div class="hx:mt-12"></div>
+
+<div class="hx:w-full hx:flex hx:flex-col hx:items-center hx:mt-6">
+
+{{< hextra/hero-section >}}
+Partners
+{{< /hextra/hero-section >}}
+
+<p class="hx:mt-1 hx:text-center hx:text-lg hx:text-gray-500 hx:dark:text-gray-400">
+They support us and make our work possible.</p>
+
+</div>
+
+{{< hextra/feature-grid >}}
+  {{< hextra/feature-card
+    image="images/openplanetary.png"
+    link="https://www.openplanetary.org/"
+    style="height:200px; transform: scale(0.8); border-width:0px;"
+  >}}
+  {{< hextra/feature-card
+    image="images/carto.png"
+    link="https://carto.com/"
+    style="height:200px; transform: scale(0.8); border-width:0px;"
+  >}}
+  {{< hextra/feature-card
+    image="images/maptiler.png"
+    link="https://www.maptiler.com/"
+    style="height:200px; transform: scale(0.8); border-width:0px;"
+  >}}
+{{< /hextra/feature-grid >}}
+  
+<div class="hx:mb-10"></div>
 
