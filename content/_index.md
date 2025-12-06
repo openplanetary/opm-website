@@ -126,6 +126,7 @@ They support us and make our work possible.</p>
     image="images/openplanetary.svg"
     link="https://www.openplanetary.org/"
     style="height:200px; border-width:0px; display:flex; align-items:center; justify-content:center;"
+    imageClass="hx:h-[80px]"
   >}}
   {{< hextra/feature-card
     image="images/carto.svg"
