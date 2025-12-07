@@ -1,0 +1,23 @@
+
+{{ $basemaps := .Site.Data.basemaps }}
+
+<h2>Mars Basemaps</h2>
+<ul>
+{{ range where $basemaps "Target" "mars" }}
+  <li><strong>{{ .Name }}</strong> (ID: <code>{{ .mapID }}</code>)</li>
+{{ end }}
+</ul>
+
+<h2>Moon Basemaps</h2>
+<ul>
+{{ range where $basemaps "Target" "the-moon" }}
+  <li><strong>{{ .Name }}</strong> (ID: <code>{{ .mapID }}</code>)</li>
+{{ end }}
+</ul>
+
+<h2>Mercury Basemaps</h2>
+<ul>
+{{ range where $basemaps "Target" "mercury" }}
+  <li><strong>{{ .Name }}</strong> (ID: <code>{{ .mapID }}</code>)</li>
+{{ end }}
+</ul>

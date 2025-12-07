@@ -1,6 +1,3 @@
 ---
-title: Moon
-weight: 3
+target: 'moon'
 ---
-
-This page lists all available Moon basemaps organized by planetary body.
