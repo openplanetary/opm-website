@@ -30,7 +30,7 @@
         {{ partial "breadcrumb.html" . }}
         <div class="content">
           <h1>{{ $basemap.Name }}</h1>
-          <div>{{ $basemap.Description }}</div>
+          <p class="hx:pb-8 hx:text-xl">{{ $basemap.Description }}</p>
 
           {{/* Add Leaflet map after description */}}
           {{ $layer_url := index $basemap "XYZ URL" }}
@@ -42,6 +42,7 @@
           <h3>XYZ raster tiles URL</h3>
           <p>Copy and paste the following URL in your JavaScript code using web clients such as Leaflet or OpenLayers.</p>
           <p>{{ index $basemap "XYZ URL" }}</p>
+
           <p>Note that you can fetch individual layer or a group of layers for this basemap. For example, you can fetch only tiles related to the nomenclature labels, and lay it on top of a single-layer raster basemap available for this planetary body. Learn more about how to <a href="https://carto.com/developers/maps-api/guides/named-maps/#fetching-xyz-tiles-for-named-maps" target="_blank" class="link-10">fetch CARTO XYZ Tiles for Named Maps</a>.</p>
           <h3>Examples</h3>
           <h4>Leafmap</h4>

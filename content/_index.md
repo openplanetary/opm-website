@@ -91,14 +91,6 @@ Web map interfaces using OPM basemaps.
   >}}
 
   {{< card
-        link="https://geosketch.io/moon/"
-        title="Geosketch Moon"
-        subtitle="Web interface for collaborative sharing of geospatial snippets via Qgis WKT copy-paste."
-        image="images/geosketch_moon.png"
-        imageStyle="object-fit:cover; aspect-ratio:16/9;"
-  >}}
-
-  {{< card
         link="https://pdssp.ias.universite-paris-saclay.fr"
         title="Pôle de Données et Services Surfaces Planétaires (PDSSP)"
         subtitle="Web interface for accessing, visualising, and analysing planetary science data distributed across French's laboratories."
