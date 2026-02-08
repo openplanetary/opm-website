@@ -54,6 +54,6 @@ layers schema"_ similarly to the [OpenMapTiles](https://openmaptiles.org/schema/
 
 ### References
 
-- Nass, A., Manaud, N., van Gasselt, S., & Hare, T. M. (2019). _Towards a new face for Planetary Maps: Design and web-based Implementation of Planetary Basemaps_. Advances in Cartography and GIScience of the ICA, 1, 1–8. https://doi.org/10.5194/ica-adv-1-15-2019 [[PDF](docs/ica-adv-1-15-2019.pdf)]
+- Nass, A., Manaud, N., van Gasselt, S., & Hare, T. M. (2019). _Towards a new face for Planetary Maps: Design and web-based Implementation of Planetary Basemaps_. Advances in Cartography and GIScience of the ICA, 1, 1–8. https://doi.org/10.5194/ica-adv-1-15-2019 [[PDF](/docs/ica-adv-1-15-2019.pdf)]
 - Manaud, N, Nass, A., Lewando, M., van Gasselt, S., Rossi, A. P., Hare, T., Carter, J., & Hargitai, H. (2018). _OpenPlanetaryMap: Building the first Open Planetary Mapping and Social platform for researchers, educators, storytellers, and the general public_. EPSC2018-78. https://ui.adsabs.harvard.edu/abs/2018EPSC...12...78M
 - Manaud, N., Boix, O., Vago, J., Hill, A.; Iriberri, C., Carrión, D. (2015) _"Where On Mars?": A Web Map Visualisation of the ExoMars 2018 Rover Candidate Landing Sites_. EPSC2015-228. https://ui.adsabs.harvard.edu/abs/2015EPSC...10..228M 
