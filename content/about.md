@@ -32,8 +32,9 @@ XYZ map tiles.
 
 ![](images/opm-mars-basemap_screenshots.png)
 
-Despite the success of our Mars basemap, we acknowledge that we did not deliver on the promise of an Open Planetary
-Mapping platform. A title too ambitious maybe?
+Building on the success of our Mars basemap, we learned that delivering a full Open Planetary Mapping platform is a
+larger, longer-term effort than we could complete at the time. That original vision remains our north star, and it now
+shapes a more concrete roadmap for what comes next.
 
 ### What's next?
 
